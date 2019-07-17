@@ -3,6 +3,7 @@ import Spinner from 'components/Spinner/Spinner';
 import ErrorIndicator from 'components/ErrorIndicator/ErrorIndicator';
 
 import { BookstoreServiceProvider } from 'components/BookstoreServiceContext';
+import BookstoreService from "services/BookstoreService";
 
 import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
@@ -13,14 +14,18 @@ import { createStore } from 'redux';
 
 class App extends React.Component {
 
+  state = {
+    BookstoreService: new BookstoreService(),
+  }
+
   render() {
     return (
-      <Provider store={ store }>
+      <BookstoreServiceProvider  value={ this.state.BookstoreService }>
         <div className="RestoreApp">
           <Spinner />
           <ErrorIndicator />
         </div>
-      </Provider>
+      </BookstoreServiceProvider>
     )
   }
 }
