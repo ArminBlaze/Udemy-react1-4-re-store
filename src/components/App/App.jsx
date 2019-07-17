@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from 'components/Spinner/Spinner';
 import ErrorIndicator from 'components/ErrorIndicator/ErrorIndicator';
 
-import { BookstoreServiceProvider } from 'components/BookstoreServiceContext';
+import { BookstoreServiceProvider } from 'components/BookstoreServiceContext/BookstoreServiceContext';
 import BookstoreService from "services/BookstoreService";
 
 import { createStore } from 'redux';
