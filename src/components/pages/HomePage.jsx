@@ -1,5 +1,6 @@
 import React from 'react';
 import BookList from 'components/BookList/BookList';
+import CartTable from 'components/CartTable/CartTable';
 
 
 const HomePage = () => {
@@ -8,6 +9,7 @@ const HomePage = () => {
     <div>
       <h1>Страница с книгами.</h1>
       <BookList />
+      <CartTable />
     </div>
   )
 }

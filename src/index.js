@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
+import App from 'components/App/App';
 import ErrorBoundry from 'components/ErrorBoundry/ErrorBoundry'
 import { BookstoreServiceProvider } from 'components/BookstoreServiceContext/BookstoreServiceContext';
 import BookstoreService from "services/BookstoreService";

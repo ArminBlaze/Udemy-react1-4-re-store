@@ -1,0 +1,19 @@
+.CartTable__total {
+  text-align: right;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.CartTable__table {
+  text-align: left;
+}
+
+.CartTable__table th:last-child,
+.CartTable__table td:last-child {
+  text-align: center;
+}
+
+.CartTable__table button {
+  margin-left: 5px;
+  margin-top: 5px;
+}

@@ -1,0 +1,25 @@
+.ShopHeader {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.ShopHeader__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  
+}
+
+.ShopHeader__cart {
+  align-self: center;
+  font-size: 1.3rem;
+}
+
+.ShopHeader__cart .cart-icon {
+  font-size: 2.2rem;
+  color: cadetblue;
+  margin-right: 10px;
+}

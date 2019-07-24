@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import withBookstoreService from 'hocs/withBookstoreService';
 import * as actions from 'actions';
 import compose from 'utils/compose';
+import './BookList.css';
 
 
 class BookList extends Component {
@@ -18,7 +19,7 @@ class BookList extends Component {
     const {books} = this.props;
     
     return (
-      <ul>
+      <ul className='BookList'>
         {
           books.map((item) => <li key={item.id}><BookListItem book={ item } /></li>)
         }

@@ -4,19 +4,21 @@ import React from 'react';
 import withBookstoreService from 'hocs/withBookstoreService';
 import { Route, Switch } from 'react-router-dom';
 
-import { CartPage, HomePage } from 'components/pages'
+import ShopHeader from 'components/ShopHeader/ShopHeader';
+import { CartPage, HomePage } from 'components/pages';
 
 
 class App extends React.Component {
 
   render() {
     return (
-        <div className="RestoreApp">
+        <main role="main" className="container">
+          <ShopHeader numItems={5} total={210}/>
           <Switch >
             <Route path="/" component={HomePage} exact/>
             <Route path="/cart" component={CartPage}/>
           </Switch>
-        </div>
+        </main>
     )
   }
 }
