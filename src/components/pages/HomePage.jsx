@@ -7,7 +7,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Страница с книгами.</h1>
       <BookList />
       <CartTable />
     </div>
