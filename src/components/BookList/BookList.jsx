@@ -5,18 +5,23 @@ import withBookstoreService from 'hocs/withBookstoreService';
 import * as actions from 'actions';
 import compose from 'utils/compose';
 import './BookList.css';
+import Spinner from 'components/Spinner/Spinner';
+// import ErrorIndicator from 'components/ErrorIndicator/ErrorIndicator';
 
 
 class BookList extends Component {
 
   componentDidMount() {
     const {bookstoreService} = this.props;
-    const data = bookstoreService.getBooks();
-    this.props.booksLoaded(data);
+    bookstoreService.getBooks()
+      .then( (data) => this.props.booksLoaded(data) )
+    
   }
 
   render() {
-    const {books} = this.props;
+    const {books, loading} = this.props;
+
+    if(loading) return <Spinner />
     
     return (
       <ul className='BookList'>
@@ -28,9 +33,10 @@ class BookList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({books, loading}) => {
   return {
-    books: state.books
+    books,
+    loading,
   }
 };
 
