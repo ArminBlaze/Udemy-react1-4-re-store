@@ -10,12 +10,13 @@
 .ShopHeader__logo {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  
+  cursor: pointer;
 }
 
 .ShopHeader__cart {
   align-self: center;
   font-size: 1.3rem;
+  cursor: pointer;
 }
 
 .ShopHeader__cart .cart-icon {
