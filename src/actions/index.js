@@ -11,7 +11,15 @@ const booksLoaded = (newBooks) => {
   }
 }
 
+const booksError = (error) => {
+  return {
+    type: 'BOOKS_ERROR',
+    value: error,
+  }
+}
+
 export {
   booksRequested,
   booksLoaded,
+  booksError,
 };

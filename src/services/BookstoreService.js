@@ -1,3 +1,5 @@
+
+
 export default class BookstoreService {
   data = [
     {
@@ -24,8 +26,15 @@ export default class BookstoreService {
   ];
 		
   getBooks() {
-    return new Promise( (resolve) => {
-      setTimeout( () => resolve(this.data), 700);
+    return new Promise( (resolve, reject) => {
+      setTimeout( () => {
+        if (Math.random() > 0.75) {
+          reject(new Error('BIG ERROR!'))
+        }
+        else {
+          resolve(this.data);
+        }
+      }, 700);
     })
   }
 
