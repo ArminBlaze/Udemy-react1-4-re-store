@@ -1,8 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './CartTable.css';
 
-const CartTable = () => {
+const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
+
+  const renderRow = (item, i) => {
+    const {id, title, total, count} = item;
+
+    return (
+      <tr key={id}>
+        <td>{i+1}</td>
+        <td>{title}</td>
+        <td>{count}</td>
+        <td>${total}</td>
+        <td>
+          <button className='btn btn-outline-success btn-small'
+            onClick={() => onPlus(id)}>
+            <i className="fa fa-plus-circle" />
+          </button>
+          <button className='btn btn-outline-warning btn-small'
+            onClick={() => onMinus(id)}>
+            <i className="fa fa-minus-circle" />
+          </button>
+          <button className='btn btn-outline-danger btn-small'
+            onClick={() => onDelete(id)}>
+            <i className="fa fa-trash-o" />
+          </button>
+        </td>
+      </tr>
+    )
+  }
+
   return (
     <div className="CartTable">
       <h2>Your Order</h2>
@@ -15,35 +44,37 @@ const CartTable = () => {
             <th>Price</th>
             <th>Action</th>
           </tr>
-      
         </thead>
 
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Site Reliability Engineering!</td>
-            <td>2</td>
-            <td>$40</td>
-            <td>
-              <button className='btn btn-outline-danger btn-small'>
-                <i className="fa fa-trash-o" />
-              </button>
-              <button className='btn btn-outline-success btn-small'>
-                <i className="fa fa-plus-circle" />
-              </button>
-              <button className='btn btn-outline-warning btn-small'>
-                <i className="fa fa-minus-circle" />
-              </button>
-            </td>
-          </tr>
+          {
+            items.map( renderRow )
+          }
         </tbody>
       </table>
 
       <div className="CartTable__total">
-        Total: $201
+        Total: ${total}
       </div>
     </div>
   )
 }
 
-export default CartTable;
+const mapStateToProps = ({cartItems, orderTotal}) => {
+  return {
+    items: cartItems,
+    total: orderTotal,
+  }
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  // const { bookstoreService } = ownProps;
+  return {
+    // fetchBooks: fetchBooks(dispatch, bookstoreService)
+    onPlus: (id) => console.log('Plus' + id),
+    onMinus: (id) => console.log('Minus' + id),
+    onDelete: (id) => console.log('Delete' + id),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
