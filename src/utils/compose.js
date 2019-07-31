@@ -1,6 +1,7 @@
 // const compose = ( ...fns) => (comp) => {
 //   return fns.reduceRight(
-//     (wrapped, f) => f(wrapped), comp);
+//     (wrapped, f) => f(wrapped), comp
+  // );
 // };
 
 
