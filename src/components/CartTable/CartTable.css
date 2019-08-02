@@ -12,8 +12,24 @@
   text-align: left;
 }
 
+.CartTable__table th:nth-child(1),
+.CartTable__table td:nth-child(1) {
+  width: 5%;
+} 
+
+.CartTable__table th:nth-child(3),
+.CartTable__table td:nth-child(3) {
+  width: 5%;
+} 
+
+.CartTable__table th:nth-child(4),
+.CartTable__table td:nth-child(4) {
+  width: 5%;
+} 
+
 .CartTable__table th:last-child,
 .CartTable__table td:last-child {
+  width: 15%;
   text-align: center;
 }
 

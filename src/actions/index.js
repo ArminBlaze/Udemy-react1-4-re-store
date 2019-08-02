@@ -25,6 +25,28 @@ const bookAddedToCart = (bookId) => {
   } 
 }
 
+const bookPlusCount = (bookId) => {
+  return {
+    type: 'BOOK_PLUS_COUNT',
+    value: bookId,
+  }
+}
+
+const bookMinusCount = (bookId) => {
+  return {
+    type: 'BOOK_MINUS_COUNT',
+    value: bookId,
+  }
+}
+
+const bookDeleteFromCart = (bookId) => {
+  return {
+    type: 'BOOK_DELETE_FROM_CART',
+    value: bookId,
+  }
+}
+
+
 const fetchBooks = (dispatch, bookstoreService) => () => {
   dispatch( booksRequested() );
   bookstoreService.getBooks()
@@ -35,4 +57,7 @@ const fetchBooks = (dispatch, bookstoreService) => () => {
 export {
   fetchBooks,
   bookAddedToCart,
+  bookPlusCount,
+  bookMinusCount,
+  bookDeleteFromCart,
 };
