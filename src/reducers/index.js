@@ -39,37 +39,11 @@ const reducer = (state = initialState, action) => {
       const bookId = action.value;
       const book = state.books.find( (book) => book.id === bookId );
       //сначала надо искать есть ли эта книга в cartItems
-      let idx;
-      const oldItem = state.cartItems.find( (item, i) => {
-        let result = false;
-        if(item.id === bookId) {
-          idx = i;
-          result = true;
-        }
-        return result
-      });
-    
-      const count = (oldItem) ? oldItem.count + 1 : 1;
+      let idx = state.cartItems.findIndex( (item) => item.id === bookId)
+      const oldItem = state.cartItems[idx];
 
-      const newItem = {
-        id: book.id,
-        title: book.title,
-        count: count,
-        total: book.price * count,
-      };
-
-      let cartItems = state.cartItems;
-
-
-      let newCart;
-      if(oldItem) {
-        newCart = [].concat(cartItems.slice(0, idx), newItem, cartItems.slice(idx+1, cartItems.length));
-      }
-      else {
-        newCart = [...cartItems, newItem];
-      }
-
-      console.log(newCart);
+      const newItem = updateItem(oldItem, book);
+      let newCart = updateCartItems(state.cartItems, newItem, idx);
 
       return {
         ...state,
@@ -82,5 +56,31 @@ const reducer = (state = initialState, action) => {
   }
 
 }
+
+
+function updateItem (oldItem, book) {
+  const count = (oldItem) ? oldItem.count + 1 : 1;
+
+  return {
+    id: book.id,
+    title: book.title,
+    count: count,
+    total: book.price * count,
+  };
+}
+
+
+function updateCartItems (cartItems, item, i) {
+  if(i === undefined) {
+    return [...cartItems, item]
+  }
+  
+  return [
+      ...cartItems.slice(0, i),
+      item,
+      ...cartItems.slice(i+1) //без второго аргумента = до конца.
+    ]
+}
+
 
 export default reducer;
