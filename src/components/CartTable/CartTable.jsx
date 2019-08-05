@@ -49,7 +49,6 @@ const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
 
         <tbody>
           {
-            
             items.map( renderRow )
           }
         </tbody>

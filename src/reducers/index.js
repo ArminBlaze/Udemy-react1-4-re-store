@@ -136,7 +136,7 @@ function deleteFromCart (cartItems, i) {
 
 
 function updateCartItems (cartItems, item, i) {
-  if(i === -1) {
+  if(i === undefined) {
     return [...cartItems, item]
   }
   
