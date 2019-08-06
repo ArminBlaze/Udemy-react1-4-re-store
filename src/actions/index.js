@@ -25,13 +25,6 @@ const bookAddedToCart = (bookId) => {
   } 
 }
 
-const bookPlusCount = (bookId) => {
-  return {
-    type: 'BOOK_PLUS_COUNT',
-    value: bookId,
-  }
-}
-
 const bookMinusCount = (bookId) => {
   return {
     type: 'BOOK_MINUS_COUNT',
@@ -57,7 +50,6 @@ const fetchBooks = (dispatch, bookstoreService) => () => {
 export {
   fetchBooks,
   bookAddedToCart,
-  bookPlusCount,
   bookMinusCount,
   bookDeleteFromCart,
 };
