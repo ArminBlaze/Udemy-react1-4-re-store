@@ -39,7 +39,9 @@ function BookList ({books, onAddToCart}) {
   )
 }
 
-const mapStateToProps = ({books, loading, error}) => {
+const mapStateToProps = (state) => {
+  const {books, loading, error} = state.bookList;
+
   return {
     books,
     loading,
