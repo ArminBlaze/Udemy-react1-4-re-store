@@ -2,7 +2,8 @@ function updateShoppingCart (state, action) {
   if (state === undefined) {
     return {
       cartItems: [],
-      orderTotal: 250,
+      orderTotal: 0,
+      countTotal: 0,
     }
   }
 
@@ -42,9 +43,30 @@ function universalCartUpdate(state, bookId, amount) {
   const newItem = updateItem(oldItem, book, amount);
   let newCart = updateCartItems(cartItems, newItem, idx);
 
+  //считаем общую сумму заказа и количество вещей в корзине
+  const {total, itemsCount} = calculateTotal(newCart);
+  
+
   return {
     cartItems: newCart,
+    orderTotal: total,
+    countTotal: itemsCount,
   }
+}
+
+function calculateTotal (newCart) {
+  console.log(newCart);
+  if(newCart.length === 0) return 0
+
+  let total = 0;
+  let itemsCount = 0;
+  newCart.forEach(element => {
+    total += element.total;
+    itemsCount += element.count;
+  });
+  console.log(total, itemsCount)
+
+  return {total, itemsCount};
 }
 
 function updateItem (oldItem, book, amount) {

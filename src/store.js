@@ -33,13 +33,13 @@ store.dispatch('HELLO_WORLD');
 
 // store.dispatch( myAction );
 
-const delayedActionCreator = (sec) => (dispatch) => {
-  setTimeout( () => dispatch({
-    type: 'DELAYED_ACTION'
-  })
-  , sec*1000)
-}
+// const delayedActionCreator = (sec) => (dispatch) => {
+//   setTimeout( () => dispatch({
+//     type: 'DELAYED_ACTION'
+//   })
+//   , sec*1000)
+// }
 
-store.dispatch( delayedActionCreator(5) );
+// store.dispatch( delayedActionCreator(5) );
 
 export default store;
