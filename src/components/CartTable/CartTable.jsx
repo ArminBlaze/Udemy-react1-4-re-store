@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import { connect } from 'react-redux';
 import { bookAddedToCart, bookMinusCount, bookDeleteFromCart } from 'actions';
 
@@ -6,32 +6,34 @@ import './CartTable.css';
 
 const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
 
-  const renderRow = (item, i) => {
-    const {id, title, total, count} = item;
+  // const renderRow = (item, i) => {
+  //   const {id, title, total, count} = item;
+  //   console.log('renderRow');
+    
 
-    return (
-      <tr key={id}>
-        <td>{i+1}</td>
-        <td>{title}</td>
-        <td>{count}</td>
-        <td>${total}</td>
-        <td>
-          <button className='btn btn-outline-success btn-small'
-            onClick={() => onPlus(id)}>
-            <i className="fa fa-plus-circle" />
-          </button>
-          <button className='btn btn-outline-warning btn-small'
-            onClick={() => onMinus(id)}>
-            <i className="fa fa-minus-circle" />
-          </button>
-          <button className='btn btn-outline-danger btn-small'
-            onClick={() => onDelete(id)}>
-            <i className="fa fa-trash-o" />
-          </button>
-        </td>
-      </tr>
-    )
-  }
+  //   return (
+  //     <tr key={id}>
+  //       <td>{i+1}</td>
+  //       <td>{title}</td>
+  //       <td>{count}</td>
+  //       <td>${total}</td>
+  //       <td>
+  //         <button className='btn btn-outline-success btn-small'
+  //           onClick={() => onPlus(id)}>
+  //           <i className="fa fa-plus-circle" />
+  //         </button>
+  //         <button className='btn btn-outline-warning btn-small'
+  //           onClick={() => onMinus(id)}>
+  //           <i className="fa fa-minus-circle" />
+  //         </button>
+  //         <button className='btn btn-outline-danger btn-small'
+  //           onClick={() => onDelete(id)}>
+  //           <i className="fa fa-trash-o" />
+  //         </button>
+  //       </td>
+  //     </tr>
+  //   )
+  // }
 
   return (
     <div className="CartTable">
@@ -46,10 +48,19 @@ const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
             <th>Action</th>
           </tr>
         </thead>
-
+        
         <tbody>
           {
-            items.map( renderRow )
+            items.map( (item, i) => {
+              return <CartItem
+                key={item.id}
+                item={ item }
+                i={i}
+                onPlus={ () => onPlus(item.id) } 
+                onMinus={ () => onMinus(item.id) } 
+                onDelete={ () => onDelete(item.id) } 
+                />
+            }   )
           }
         </tbody>
       </table>
@@ -60,6 +71,39 @@ const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
     </div>
   )
 }
+
+class CartItem extends PureComponent {
+  render() {
+    const { item, onPlus, onMinus, onDelete, i } = this.props;
+    const {id, title, total, count} = item;
+    console.log('renderRow');
+
+    
+    return (
+      <tr key={id}>
+        <td>{i+1}</td>
+        <td>{title}</td>
+        <td>{count}</td>
+        <td>${total}</td>
+        <td>
+          <button className='btn btn-outline-success btn-small'
+            onClick={onPlus}>
+            <i className="fa fa-plus-circle" />
+          </button>
+          <button className='btn btn-outline-warning btn-small'
+            onClick={onMinus}>
+            <i className="fa fa-minus-circle" />
+          </button>
+          <button className='btn btn-outline-danger btn-small'
+            onClick={onDelete}>
+            <i className="fa fa-trash-o" />
+          </button>
+        </td>
+      </tr>
+    )
+  }
+}
+
 
 const mapStateToProps = (state) => {
   const {cartItems, orderTotal} = state.shoppingCart;
