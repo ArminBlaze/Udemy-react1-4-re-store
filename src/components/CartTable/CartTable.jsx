@@ -56,9 +56,9 @@ const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
                 key={item.id}
                 item={ item }
                 i={i}
-                onPlus={ () => onPlus(item.id) } 
-                onMinus={ () => onMinus(item.id) } 
-                onDelete={ () => onDelete(item.id) } 
+                onPlus={ onPlus } 
+                onMinus={ onMinus } 
+                onDelete={ onDelete } 
                 />
             }   )
           }
@@ -76,7 +76,7 @@ class CartItem extends PureComponent {
   render() {
     const { item, onPlus, onMinus, onDelete, i } = this.props;
     const {id, title, total, count} = item;
-    console.log('renderRow');
+    console.log(this.props);
 
     
     return (
@@ -87,15 +87,15 @@ class CartItem extends PureComponent {
         <td>${total}</td>
         <td>
           <button className='btn btn-outline-success btn-small'
-            onClick={onPlus}>
+            onClick={() => onPlus(id)}>
             <i className="fa fa-plus-circle" />
           </button>
           <button className='btn btn-outline-warning btn-small'
-            onClick={onMinus}>
+            onClick={() => onMinus(id)}>
             <i className="fa fa-minus-circle" />
           </button>
           <button className='btn btn-outline-danger btn-small'
-            onClick={onDelete}>
+            onClick={() => onDelete(id)}>
             <i className="fa fa-trash-o" />
           </button>
         </td>
