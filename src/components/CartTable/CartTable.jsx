@@ -6,35 +6,6 @@ import './CartTable.css';
 
 const CartTable = ({ items, total, onPlus, onMinus, onDelete }) => {
 
-  // const renderRow = (item, i) => {
-  //   const {id, title, total, count} = item;
-  //   console.log('renderRow');
-    
-
-  //   return (
-  //     <tr key={id}>
-  //       <td>{i+1}</td>
-  //       <td>{title}</td>
-  //       <td>{count}</td>
-  //       <td>${total}</td>
-  //       <td>
-  //         <button className='btn btn-outline-success btn-small'
-  //           onClick={() => onPlus(id)}>
-  //           <i className="fa fa-plus-circle" />
-  //         </button>
-  //         <button className='btn btn-outline-warning btn-small'
-  //           onClick={() => onMinus(id)}>
-  //           <i className="fa fa-minus-circle" />
-  //         </button>
-  //         <button className='btn btn-outline-danger btn-small'
-  //           onClick={() => onDelete(id)}>
-  //           <i className="fa fa-trash-o" />
-  //         </button>
-  //       </td>
-  //     </tr>
-  //   )
-  // }
-
   return (
     <div className="CartTable">
       <h2>Your Order</h2>
