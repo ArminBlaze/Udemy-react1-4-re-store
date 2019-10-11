@@ -17,6 +17,7 @@ class App extends React.Component {
           <Switch >
             <Route path="/" component={HomePage} exact/>
             <Route path="/cart" component={CartPage}/>
+            <Route render={() => <h2>Page not found.</h2>}/>
           </Switch>
         </main>
     )
