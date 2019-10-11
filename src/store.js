@@ -4,7 +4,6 @@ import thunkMiddleware from 'redux-thunk';
 
 
 const logMiddleware = store => dispatch => (action) => {
-  console.log(action.type);
   return dispatch(action);
 }
 

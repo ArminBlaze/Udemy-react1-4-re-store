@@ -55,7 +55,6 @@ function universalCartUpdate(state, bookId, amount) {
 }
 
 function calculateTotal (newCart) {
-  console.log(newCart);
   if(newCart.length === 0) return 0
 
   let total = 0;
@@ -64,7 +63,6 @@ function calculateTotal (newCart) {
     total += element.total;
     itemsCount += element.count;
   });
-  console.log(total, itemsCount)
 
   return {total, itemsCount};
 }
